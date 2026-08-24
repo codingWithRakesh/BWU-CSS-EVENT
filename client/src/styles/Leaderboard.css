@@ -1,236 +1,255 @@
-/* --- Leaderboard.css --- */
-:root {
-  --bg-dark: #050505;
-  --theme-yellow: #ffb703;
-  --theme-yellow-dim: rgba(255, 183, 3, 0.15);
-  --theme-yellow-glow: rgba(255, 183, 3, 0.4);
-  --text-main: #ffffff;
-  --text-muted: #9ca3af;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-}
-
+/* Container and Background */
 .leaderboard-container {
-  min-height: 85vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: var(--bg-dark);
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
   position: relative;
   overflow: hidden;
-  font-family: system-ui, -apple-system, sans-serif;
-  padding: 2rem;
+  font-family: 'Inter', sans-serif; /* Adjust to match your project font */
 }
 
-/* Background Glowing Orbs */
-.glow-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.glow-blob.top-left {
-  width: 300px;
-  height: 300px;
-  background: var(--theme-yellow-dim);
-  top: -100px;
-  left: -100px;
-}
-
-.glow-blob.bottom-right {
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 183, 3, 0.08);
-  bottom: -150px;
-  right: -100px;
-}
-
-/* Glassmorphism Card */
-.coming-soon-card {
-  position: relative;
-  z-index: 1;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 4rem 3rem;
-  max-width: 600px;
+/* Card Styling */
+.leaderboard-card {
+  background-color: #111111; /* Dark background matching your UI */
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 40px;
   width: 100%;
-  text-align: center;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  max-width: 800px; /* Wider card to fit table data */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 10;
 }
 
-/* Icon Styles */
-.icon-wrapper {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--theme-yellow-dim) 0%, transparent 70%);
-  margin-bottom: 1.5rem;
-}
-
-.trophy-icon {
-  color: var(--theme-yellow);
-  filter: drop-shadow(0 0 15px var(--theme-yellow-glow));
-}
-
-.sparkle-icon {
-  position: absolute;
-  color: #fff;
-}
-
-.sparkle-icon.top-right {
-  top: 10px;
-  right: 15px;
-  color: var(--theme-yellow);
-}
-
-.sparkle-icon.bottom-left {
-  bottom: 20px;
-  left: 15px;
-  opacity: 0.7;
-}
-
-/* Typography */
-.text-content {
-  margin-bottom: 2.5rem;
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .leaderboard-title {
+  color: #ffffff;
   font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--text-main);
   letter-spacing: 2px;
-  margin: 0 0 1.5rem 0;
-  background: linear-gradient(to right, #fff, #a1a1aa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 183, 3, 0.15);
-  border: 1px solid rgba(255, 183, 3, 0.3);
-  color: var(--theme-yellow);
-  padding: 0.5rem 1.2rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 1.5rem;
-}
-
-.leaderboard-description {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0 auto;
-  max-width: 450px;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem 0 1rem;
-  color: var(--glass-border);
-}
-
-.code-icon {
-  color: rgba(255, 255, 255, 0.2);
+  margin: 0 0 10px 0;
 }
 
 .tagline {
-  color: var(--theme-yellow);
-  font-size: 0.9rem;
+  color: #FFD700; /* Yellow accent */
   font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 0;
-  opacity: 0.8;
 }
 
-/* Action Button */
+/* List/Table Styling */
+.leaderboard-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+/* Row Layout */
+.list-header, .list-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.list-header {
+  color: #888888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 10px;
+}
+
+.list-row {
+  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.list-row:hover {
+  background-color: #222222;
+  border-color: #333333;
+}
+
+/* Highlight top 3 ranks slightly */
+.list-row.top-rank {
+  background-color: #1e1b10; /* Very subtle warm tint */
+  border: 1px solid #332d15;
+}
+
+/* Columns */
+.col-rank {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-user {
+  flex: 1; /* Takes up remaining space */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.col-score {
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.col-time {
+  width: 100px;
+  text-align: right;
+  color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+/* Inner elements */
+.rank-number {
+  color: #888888;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #333;
+}
+
+.list-row.top-rank .user-avatar {
+  border-color: #FFD700; /* Gold border for top ranks */
+}
+
+.user-name {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+/* Button Styling (assuming you already have this, but providing just in case) */
 .back-btn-outline {
   background: transparent;
-  color: var(--text-main);
-  border: 1px solid var(--glass-border);
-  padding: 0.8rem 2rem;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 10px 20px;
   border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .back-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--theme-yellow);
-  color: var(--theme-yellow);
-  transform: translateY(-2px);
+  background: #222;
+  border-color: #FFD700;
+  color: #FFD700;
 }
 
-/* Animations */
-@keyframes floating {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+/* --- Semester Selection View Styles --- */
+
+.selection-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  z-index: 10;
 }
 
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(255, 183, 3, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0); }
+.selection-subtitle {
+  color: #888888;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.semester-cards-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
-.floating {
-  animation: floating 4s ease-in-out infinite;
+.sem-card {
+  background-color: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.floating-delayed {
-  animation: floating 4s ease-in-out 1.5s infinite;
+.sem-card:hover {
+  border-color: #FFD700;
+  transform: translateY(-5px);
+  background-color: #151515;
 }
 
-.pulse-glow {
-  animation: pulseGlow 2.5s infinite;
+.sem-card-icon {
+  background-color: #1e1b10;
+  padding: 15px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 1px solid #332d15;
 }
 
-.fade-in-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.sem-card h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .coming-soon-card {
-    padding: 3rem 1.5rem;
-  }
-  .leaderboard-title {
-    font-size: 2rem;
-  }
-  .leaderboard-description {
-    font-size: 1rem;
-  }
+.sem-card p {
+  color: #aaaaaa;
+  line-height: 1.5;
+  margin: 0 0 25px 0;
+}
+
+.sem-select-btn {
+  background: transparent;
+  color: #FFD700;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.2s ease;
+}
+
+.sem-card:hover .sem-select-btn {
+  color: #ffffff;
+}
+
+.leaderboard-message {
+  color: #aaaaaa;
+  text-align: center;
+  margin: 24px 0;
+}
+
+.error-message {
+  color: #ff8b8b;
 }

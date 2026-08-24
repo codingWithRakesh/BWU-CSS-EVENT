@@ -27,6 +27,7 @@ import Profile from './Pages/Profile';
 import AccountSetting from './Pages/AccountSetting';
 import Leaderboard from './Pages/Leaderboard';
 import EventDetails from './Pages/AboutEvent';
+import ScoreManager from './Pages/ScoreManager';
 
 function App() {
   const { user } = useAuth()
@@ -106,6 +107,7 @@ function App() {
           <Route path='/post/hackthon' element={<PostHackthon/>}/>
           <Route path='/post/project' element={<PostProject/>}/>
           <Route path='/profile/:id' element={<Profile/>}/>
+          <Route path='/scoremanager' element={<ScoreManager/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
