@@ -5,6 +5,7 @@ import { connectDB } from "./db/db.js"
 import authRouter from "./routes/auth.js"
 import requirmentWorkRouter from "./routes/requirmentWork.js"
 import applicationRouter from "./routes/application.js"
+import eventDataRouter from "./routes/eventData.route.js"
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -16,6 +17,7 @@ app.get("/",(req,res)=>{
 app.use("/api/v1/auth",authRouter);
 app.use("/api/v2/reqirment",requirmentWorkRouter);
 app.use("/api/v3/application",applicationRouter);
+app.use("/api/v4/event-data", eventDataRouter);
 app.listen(process.env.PORT,()=>{
    console.log(`Server Started on http://localhost:${process.env.PORT}`)
 })
