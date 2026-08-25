@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CalendarClock, Layers, Medal, Trophy } from 'lucide-react';
 import '../styles/Leaderboard.css';
 
-const RESULT_RELEASE_TIME = new Date('2026-08-26T12:00:00+05:30').getTime();
+const RESULT_RELEASE_TIME = new Date('2026-08-27T12:00:00+05:30').getTime();
 
 const getTimeLeft = () => {
   const difference = RESULT_RELEASE_TIME - Date.now();
