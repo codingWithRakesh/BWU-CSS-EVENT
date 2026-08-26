@@ -207,7 +207,7 @@ const handleclickfor5=()=>{
             </p>
             <h1 className="leaderboard-title">LEADERBOARD LOCKED</h1>
             <p className="selection-subtitle countdown-subtitle">
-              Results will be visible on 26 August 2026 at 12:00 PM.
+              Results will be visible on 27 August 2026 at 12:00 PM.
             </p>
           </div>
 
