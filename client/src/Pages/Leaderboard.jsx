@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CalendarClock, Layers, Medal, Trophy } from 'lucide-react';
 import '../styles/Leaderboard.css';
+import { useNavigate } from 'react-router';
 
 const RESULT_RELEASE_TIME = new Date('2026-08-27T12:00:00+05:30').getTime();
 
@@ -261,7 +262,19 @@ const handleclickfor5=()=>{
   }
 ])
 }
+const naviget =useNavigate()
+const handleclick=async(photourl)=>{
+   const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/get-data`;
+        const response = await fetch(url, {
+          method: "POST",
+          headers:{ "Content-Type": "application/json" },
+          body:JSON.stringify({imgurl:photourl})
+        });
+        const data= await response.json();
+        console.log(data.data._id);
+        naviget(`/profile/${data.data._id}`)
 
+}
   const handleGoBackToSelection = () => {
     setSelectedSem(null);
   };
@@ -379,7 +392,7 @@ const handleclickfor5=()=>{
             <p className="leaderboard-message">No accepted participants found for {selectedSem} semester.</p>
           )}
           {!isLoading && !error && leaderboardData.map((user) => (
-            <div key={user.rank} className={`list-row ${user.rank <= 3 ? 'top-rank' : ''}`}>
+            <div onClick={()=>{handleclick(user.studentProfileimage)}} style={{cursor:"pointer"}} key={user.rank} className={`list-row  ${user.rank <= 3 ? 'top-rank' : ''}`}>
               <div className="col-rank">{getRankBadge(user.rank)}</div>
               <div className="col-user">
                 <img src={user.studentProfileimage} alt={user.studentName} className="user-avatar" />

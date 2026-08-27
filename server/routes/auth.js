@@ -63,10 +63,10 @@ authRouter.post("/otpverify", async (req, res) => {
 })
 authRouter.post("/register", upload.single('profilepic'), async (req, res) => {
     try {
-        const { fullname, password, email, collagename, bio, skill, githublink, linkedinlink, protfolio ,studentCode ,section , phoneNumber} = JSON.parse(req.body.userinfo);
+        const { fullname, password, email, collagename, bio, skill, githublink, linkedinlink, protfolio, studentCode, section, phoneNumber } = JSON.parse(req.body.userinfo);
         console.log(protfolio)
         console.log(password)
-        
+
         const IsFristUser = User.findOne({ email: email });
         if (!IsFristUser) {
             return res.status(400).json({ "message": "Already have an account.", status: false })
@@ -96,7 +96,7 @@ authRouter.post("/register", upload.single('profilepic'), async (req, res) => {
             section,
             protfolio: protfolio,
             password: haspass,
-            phoneNumber:phoneNumber
+            phoneNumber: phoneNumber
         })
         await newuser.save();
         return res.status(200).json({ "message": "Register done", status: true })
@@ -375,6 +375,37 @@ authRouter.post('/update-user-data', fetchuer, async (req, res) => {
 
         await User.findByIdAndUpdate(finduser._id, { $set: req.body }, { new: true })
         return res.status(200).json({ status: true, "msg": "Profile update Successful" })
+    } catch (error) {
+        return res.status(500).json({
+            status: false,
+            message: error.message
+        });
+    }
+})
+authRouter.post('/get-data', async (req, res) => {
+    try {
+        const { imgurl } = req.body;
+        if (!imgurl) {
+            return res.status(400).json({
+                status: false,
+                message: "url is required"
+            });
+        }
+        const findId = await User.findOne({ image_url: imgurl }).select("_id").lean();
+        console.log(findId)
+        if (!findId) {
+                return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+
+        }
+        return res.status(200).json({
+            status: true,
+            data: findId,
+        })
+
+
     } catch (error) {
         return res.status(500).json({
             status: false,
