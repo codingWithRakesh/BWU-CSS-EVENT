@@ -402,7 +402,6 @@ const handleclick=async(photourl)=>{
             </div>
           ))}
         </div>
-        
         {/* Button to go back to semester selection instead of previous page */}
         <button className="back-btn-outline" onClick={handleGoBackToSelection}>
           ← Back to Semesters
@@ -411,5 +410,4 @@ const handleclick=async(photourl)=>{
     </div>
   );
 };
-
 export default Leaderboard;
