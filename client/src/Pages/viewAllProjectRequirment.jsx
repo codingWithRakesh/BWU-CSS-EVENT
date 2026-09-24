@@ -322,74 +322,74 @@ export default function ViewAllProjectRequirment() {
                     const projectHackerRankLinks = hackerRankLinks[projectIndex] ?? {};
 
                     return (
-                      <div key={project._id} className="card">
-                        <div className="card-header">
-                          <h3 className="card-title">{project.ProjectTitle}</h3>
-                          <a >
-                            <div className="icon-box">
-                              <svg fill="#ffffff" width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.987 1.091L2 6.85v10.3l9.987 5.759 9.986-5.759V6.85l-9.986-5.759zm5.541 12.392h-2.158v-2.585h-6.74v2.585H6.472v-6.966h2.158v2.247h6.74V6.517h2.158v6.966z" />
-                              </svg>
+                    <div key={project._id} className="card">
+                      <div className="card-header">
+                        <h3 className="card-title">{project.ProjectTitle}</h3>
+                        <a >
+                          <div className="icon-box">
+                            <svg fill="#ffffff" width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M11.987 1.091L2 6.85v10.3l9.987 5.759 9.986-5.759V6.85l-9.986-5.759zm5.541 12.392h-2.158v-2.585h-6.74v2.585H6.472v-6.966h2.158v2.247h6.74V6.517h2.158v6.966z" />
+                            </svg>
 
-                            </div>
-                          </a>
-                        </div>
-
-                        <div className="card-section">
-                          <p className="card-label">
-                            <Globe size={16} /> Event Type
-                          </p>
-                          <p className="card-value">{project.ProjectType}</p>
-
-                          {/* --- ADDED DATES IN LIST VIEW --- */}
-                          <div className="date-info-row">
-                            {project.projectDate && (
-                              <span className="date-badge">
-                                <CalendarDays size={14} /> Event: {formatDate(project.projectDate)}
-                              </span>
-                            )}
-                            {project.lastDateOfApply && (
-                              <span className="date-badge deadline">
-                                <Hourglass size={14} /> Apply by: {formatDate(project.lastDateOfApply)}
-                              </span>
-                            )}
                           </div>
-                        </div>
-
-                        <div className="card-section flex-grow">
-                          <p className="card-label">
-                            <Zap size={16} /> Required Skills
-                          </p>
-                          <div className="tags-flex">
-                            {project.RequiredSkills.map((skill, index) => (
-                              <Badge key={index} outline>{skill}</Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="round-buttons">
-                          {['round1', 'round2'].map((roundKey, roundIndex) => {
-                            const url = projectHackerRankLinks[roundKey];
-
-                            return url ? (
-                              <a href={url} target="_blank" rel="noopener noreferrer">
-                                <button key={roundKey} className="card-btn">
-                                  Round {roundIndex + 1} <img src={hackerrank} alt="HackerRank" />
-                                </button>
-                              </a>
-                            ) : null;
-                          })}
-                        </div>
-
-                        <button
-                          className="card-btn"
-                          disabled={isApplicationClosed(project.lastDateOfApply)}
-                          onClick={() => handleViewDetails(project)}
-                        >
-                          {isApplicationClosed(project.lastDateOfApply) ? 'APPLICATION CLOSED' : 'APPLY NOW'}
-                          <ChevronRight size={16} />
-                        </button>
+                        </a>
                       </div>
+
+                      <div className="card-section">
+                        <p className="card-label">
+                          <Globe size={16} /> Event Type
+                        </p>
+                        <p className="card-value">{project.ProjectType}</p>
+
+                        {/* --- ADDED DATES IN LIST VIEW --- */}
+                        <div className="date-info-row">
+                          {project.projectDate && (
+                            <span className="date-badge">
+                              <CalendarDays size={14} /> Event: {formatDate(project.projectDate)}
+                            </span>
+                          )}
+                          {project.lastDateOfApply && (
+                            <span className="date-badge deadline">
+                              <Hourglass size={14} /> Apply by: {formatDate(project.lastDateOfApply)}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="card-section flex-grow">
+                        <p className="card-label">
+                          <Zap size={16} /> Required Skills
+                        </p>
+                        <div className="tags-flex">
+                          {project.RequiredSkills.map((skill, index) => (
+                            <Badge key={index} outline>{skill}</Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="round-buttons">
+                        {['round1', 'round2'].map((roundKey, roundIndex) => {
+                          const url = projectHackerRankLinks[roundKey];
+
+                          return url ? (
+                            <button key={roundKey} className="card-btn">
+                              <a href={url} target="_blank" rel="noopener noreferrer">
+                                Round {roundIndex + 1} <img src={hackerrank} alt="HackerRank" />
+                              </a>
+                            </button>
+                          ) : null;
+                        })}
+                      </div>
+
+                      <button
+                        className="card-btn"
+                        disabled={isApplicationClosed(project.lastDateOfApply)}
+                        onClick={() => handleViewDetails(project)}
+                      >
+                        {isApplicationClosed(project.lastDateOfApply) ? 'APPLICATION CLOSED' : 'APPLY NOW'}
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
                     );
                   })
                 )}
