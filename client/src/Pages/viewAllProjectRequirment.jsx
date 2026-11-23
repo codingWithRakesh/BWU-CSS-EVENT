@@ -285,8 +285,8 @@ export default function ViewAllProjectRequirment() {
 
   const hackerRankLinks = [
     {
-      round1: 'https://www.hackerrank.com/coding-championship-3rd-semester-1st-round2',
-      round2: 'https://www.hackerrank.com/coding-championship-3rd-semester-2nd-roundstage-2',
+      round1: 'https://www.hackerrank.com/coding-championship-3rd-semester-final-round-1',
+      round2: 'https://www.hackerrank.com/coding-championship-3rd-semester-final-round-2',
     },
     {
       round1: 'https://www.hackerrank.com/coding-championship-5th-semester-1st-round-1790313350',
