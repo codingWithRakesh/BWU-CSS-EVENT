@@ -290,7 +290,7 @@ export default function ViewAllProjectRequirment() {
     },
     {
       round1: 'https://www.hackerrank.com/coding-championship-5th-semester-final-round-1',
-      round2: 'https://www.hackerrank.com/coding-championship-5th-semester-2nd-round-1790350937',
+      round2: 'https://www.hackerrank.com/coding-championship-5th-semester-final-round-2',
     }
   ]
 
